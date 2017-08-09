@@ -9,9 +9,44 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var article1 = {
+    title :'Article one',
+    content : `<h1> This is article 1. This is article 1. This is article 1. This is article 1. This is article 1. This is article 1. This is article 1. This is article 1.  </h1>`
+}
+
+
+function createPage(data){
+
+    
+    var title = data.title;
+    var content = data.content;
+    
+    var test =  `
+    <html>
+    <head><title> ${title} </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="/ui/style.css" rel="stylesheet" />
+    
+    </head>
+    <body>
+    <div class = "container1">
+    <h1> ${content}  </h1>
+    <hr/>
+    <a href = "/"> HOME</a>
+    </div>
+    
+    </body>
+    </html>
+    `;
+    return test;
+
+}
+
+
 app.get('/ar1', function (req, res) {
 //  res.send('hi ps1');
-  res.sendFile(path.join(__dirname, 'ui', 'ar1.html'));
+  res.send(createPage(article1));
 });
 
 app.get('/ar2', function (req, res) {
